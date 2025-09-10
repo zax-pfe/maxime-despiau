@@ -6,28 +6,45 @@
   padding: 10vh 0 10vh 0;
 
   .projectTitle {
-    font-family: "Satoshi-Medium", sans-serif;
-    font-size: 3vw;
+    font-family: "Satoshi-Regular", sans-serif;
+    font-size: 6vw;
+    width: 70vw;
+    padding: 5vh 0 10vh 5vw;
+    // text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .line {
+    height: 2px;
+    border-top: solid 1px var(--text);
+    width: 100%;
+    opacity: 0.6;
   }
 
   .projectItem {
     display: flex;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
     width: 100%;
-    border-top: solid var(--text) 1px;
+    border-bottom: solid var(--text) 1px;
     height: 20vh;
     color: var(--text);
     text-transform: uppercase;
-    position: relative h1 {
+    position: relative;
+    padding-left: 3vw;
+
+    h1 {
       font-family: "Satoshi-Black", sans-serif;
       font-size: 6vw;
     }
 
     .imagePopUp {
-      height: 40vh;
-      width: 50vw;
+      height: 45vh;
+      width: 45vw;
       position: absolute;
+      left: 50%;
+      z-index: 10;
+      background: var(--background);
     }
     .imagePopUp img {
       object-fit: cover;

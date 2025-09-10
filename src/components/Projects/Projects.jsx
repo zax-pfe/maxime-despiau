@@ -8,14 +8,19 @@ import Image from "next/image";
 const popupVariant = {
   hidden: {
     opacity: 0,
-    y: 100,
-    transition: { duration: 0.5 },
+    y: 30,
+    transition: { duration: 0.3 },
   },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 },
+    transition: { duration: 0.3 },
   },
+  // exit: {
+  //   opacity: 1,
+  //   y: 0,
+  //   transition: { duration: 0.3 },
+  // },
 };
 
 export default function Projects() {
@@ -28,6 +33,7 @@ export default function Projects() {
           isLoading={false}
         />
       </div>
+      <div className={styles.line} />
       <ProjectItem name="katana" id={0} setActiveProject={setActiveProject} />
       <ProjectItem
         name="Alternance"
@@ -56,10 +62,16 @@ function ProjectItem({ name, id, setActiveProject }) {
     setActiveProject(null);
   }
   return (
-    <div
+    <motion.div
       className={styles.projectItem}
       onMouseOver={() => mouseHoverAction()}
       onMouseOut={() => mouseLeavingAction()}
+      initial={{ opacity: 0.3 }}
+      animate={
+        hoverStatus
+          ? { opacity: 1, transition: { duration: 0.3 } }
+          : { opacity: 0.3, transition: { duration: 0.3 } }
+      }
     >
       <h1>{name}</h1>
 
@@ -82,6 +94,6 @@ function ProjectItem({ name, id, setActiveProject }) {
       </AnimatePresence>
 
       {/* </div> */}
-    </div>
+    </motion.div>
   );
 }
