@@ -1,0 +1,29 @@
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 60px;
+  width: 60px;
+  background-color: red;
+  margin: 1vh 1vw 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  z-index: 11;
+
+  .burgerContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .line {
+    height: 1px;
+    width: 30px;
+    border-top: solid 3px var(--text);
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,87 @@
+import styles from "./style.module.scss";
+import AnimatedHeaderText from "../Animatedtext/AnimatedHeader";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { categories } from "@/data/categoriesList";
+import Image from "next/image";
+
+const popupVariant = {
+  hidden: {
+    opacity: 0,
+    y: 100,
+    transition: { duration: 0.5 },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
+
+export default function Projects() {
+  const [activeProject, setActiveProject] = useState("katana");
+  return (
+    <div className={styles.projects}>
+      <div className={styles.projectTitle}>
+        <AnimatedHeaderText
+          text={"Here here a collection of my work"}
+          isLoading={false}
+        />
+      </div>
+      <ProjectItem name="katana" id={0} setActiveProject={setActiveProject} />
+      <ProjectItem
+        name="Alternance"
+        id={1}
+        setActiveProject={setActiveProject}
+      />
+      <ProjectItem
+        name="Projet Web"
+        id={2}
+        setActiveProject={setActiveProject}
+      />
+      <ProjectItem name="Gobelins" id={3} setActiveProject={setActiveProject} />
+    </div>
+  );
+}
+
+function ProjectItem({ name, id, setActiveProject }) {
+  const [hoverStatus, setHoverStatus] = useState(false);
+  function mouseHoverAction() {
+    setHoverStatus(true);
+    setActiveProject(id);
+  }
+
+  function mouseLeavingAction() {
+    setHoverStatus(false);
+    setActiveProject(null);
+  }
+  return (
+    <div
+      className={styles.projectItem}
+      onMouseOver={() => mouseHoverAction()}
+      onMouseOut={() => mouseLeavingAction()}
+    >
+      <h1>{name}</h1>
+
+      <AnimatePresence mode="wait">
+        {hoverStatus && (
+          <motion.div
+            className={styles.imagePopUp}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={popupVariant}
+          >
+            <Image
+              src={categories[id].src}
+              alt={categories[id].name}
+              fill={true}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* </div> */}
+    </div>
+  );
+}
