@@ -85,6 +85,8 @@ function ProjectItem({ name, id, setActiveProject }) {
               src={categories[id].src}
               alt={categories[id].name}
               fill={true}
+              placeholder="blur"
+              quality={40}
             />
           </motion.div>
         )}
