@@ -3,12 +3,14 @@
   width: 100%;
   position: relative;
   background-color: var(--background-loader);
-  overflow: hidden;
-  filter: brightness(80%);
+
+  overflow: visible; //pour voir l'ombre
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
   .hero img {
     object-fit: cover;
     object-position: top;
+    filter: brightness(70%);
   }
 
   .heroText {

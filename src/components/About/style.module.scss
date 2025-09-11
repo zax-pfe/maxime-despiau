@@ -1,0 +1,47 @@
+.about {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.2);
+
+  .imageContainer {
+    // padding-top: 10vh;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .imageContainer img {
+    object-fit: cover;
+    object-position: left;
+    filter: brightness(60%);
+  }
+
+  .aboutText {
+    position: absolute;
+    display: flex;
+    // height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    margin: 20vh 0 0 0;
+    // align-items: center;
+    // gap: 30vw;
+  }
+
+  .headerText {
+    font-family: "Satoshi-Black", sans-serif;
+    font-size: 8vw;
+
+    text-transform: uppercase;
+    color: var(--text);
+    color: transparent; /* Le remplissage du texte */
+    -webkit-text-stroke: 1px var(--text); /* Contour */
+  }
+
+  .contentText {
+    padding-top: 5vh;
+    color: var(--text);
+    width: 50vw;
+  }
+}

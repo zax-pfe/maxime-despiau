@@ -5,10 +5,12 @@ import Hero from "@/components/Hero/Hero";
 import Lenis from "lenis";
 import { useState, useEffect, useRef } from "react";
 import Projects from "@/components/Projects/Projects";
-
+import About from "@/components/About/About";
+import Contact from "@/components/Contact/Contact";
 export default function Index() {
   const [isLoading, setIsLoading] = useState(true);
-  const [activeSection, setActiveSection] = useState("Home");
+  const [activeSection, setActiveSection] = useState(0);
+  // const [activeMenu, setActiveMenu] = useState(false);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -31,7 +33,7 @@ export default function Index() {
       document.body.style.cursor = "default";
       document.body.style.overflow = "auto";
       document.body.style.paddingRight = "0px";
-      setActiveSection("Home");
+      setActiveSection(0);
     }, 2400);
 
     return () => clearTimeout(timeout);
@@ -40,11 +42,11 @@ export default function Index() {
   return (
     <div>
       {isLoading && <Loader />}
-      <Menu />
+      <Menu activeSection={activeSection} setActiveSection={setActiveSection} />
       <Hero />
       <Projects />
-      <div className="h-[100vh]" />
-      page normale
+      <About />
+      <Contact />
     </div>
   );
 }

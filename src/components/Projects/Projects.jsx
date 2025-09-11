@@ -28,10 +28,7 @@ export default function Projects() {
   return (
     <div className={styles.projects}>
       <div className={styles.projectTitle}>
-        <AnimatedHeaderText
-          text={"Here here a collection of my work"}
-          isLoading={false}
-        />
+        <AnimatedHeaderText text={"works"} isLoading={false} />
       </div>
       <div className={styles.line} />
       <ProjectItem name="katana" id={0} setActiveProject={setActiveProject} />

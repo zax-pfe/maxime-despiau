@@ -2,9 +2,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #484949;
+  --background: #1e1e1e;
   --background-loader: #1e1e1e;
-  --text: #ffffff;
+  --text: #f5cbec;
   --phonepanel: #7eacdb;
 }
 

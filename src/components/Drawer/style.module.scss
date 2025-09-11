@@ -1,0 +1,49 @@
+.drawer {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+  height: 100vh;
+  width: 100%;
+  z-index: 5;
+  gap: 5vw;
+
+  .imageContainer {
+    display: flex;
+    height: 70vh;
+    width: 30vw;
+  }
+
+  .imageContainer img {
+    // height: 70vh;
+    // width: 25vw;
+    object-fit: cover;
+  }
+
+  .navigationContainer {
+    display: flex;
+    height: 70vh;
+    width: 50vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+
+    .navItem {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      height: 20%;
+      border-bottom: solid 1px var(--text);
+      width: 100%;
+      cursor: pointer;
+
+      span {
+        margin-right: 3vw;
+        color: var(--text);
+        font-family: "Satoshi-Bold", sans-serif;
+        font-size: 5vw;
+      }
+    }
+  }
+}
