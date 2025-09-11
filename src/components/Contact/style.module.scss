@@ -1,6 +1,82 @@
 .contact {
-  height: 50vh;
+  height: 60vh;
   width: 100%;
   border: solid black 1px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text);
+  gap: 10vw;
+
+  .header {
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Satoshi-Black", sans-serif;
+    font-size: 8vw;
+
+    text-transform: uppercase;
+    color: var(--text);
+    color: transparent; /* Le remplissage du texte */
+    -webkit-text-stroke: 1px var(--text); /* Contour */
+  }
+
+  .infos {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    height: 40vh;
+    width: 40vw;
+    flex-direction: column;
+    gap: 3vh;
+    // border: solid red 1px;
+
+    .infoElement {
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        font-family: "Satoshi-Medium", sans-serif;
+        font-size: 2vw;
+      }
+
+      .contentContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1vw;
+        font-family: "Satoshi-Regular", sans-serif;
+      }
+
+      .lineContainer {
+        position: relative;
+        justify-content: center;
+        height: 20px;
+        width: 150px;
+        display: flex;
+        overflow: hidden;
+        .line {
+          border-top: solid 2px var(--text);
+          width: 100%;
+          position: relative;
+          z-index: 10;
+          height: 1px;
+          transform: rotate(-2deg);
+          transform-origin: right center;
+        }
+
+        .screen {
+          position: absolute;
+          // background-color: var(--background-loader);
+          background-color: var(--background);
+          z-index: 11;
+          height: 30px;
+          width: 100%;
+          opacity: 1;
+        }
+      }
+    }
+  }
 }

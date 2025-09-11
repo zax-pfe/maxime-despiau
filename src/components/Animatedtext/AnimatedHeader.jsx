@@ -33,7 +33,7 @@ export default function AnimatedHeaderText({ text, isLoading }) {
         yPercent: 100,
         autoAlpha: 0,
         ease: "power4.out",
-        stagger: 0.02,
+        stagger: 0.04,
       });
     });
   }, [isLoading]);
