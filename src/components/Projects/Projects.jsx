@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { categories } from "@/data/categoriesList";
 import Image from "next/image";
+import Link from "next/link";
 
 const popupVariant = {
   hidden: {
@@ -16,11 +17,11 @@ const popupVariant = {
     y: 0,
     transition: { duration: 0.3 },
   },
-  // exit: {
-  //   opacity: 1,
-  //   y: 0,
-  //   transition: { duration: 0.3 },
-  // },
+  exit: {
+    opacity: 0,
+    y: -30,
+    transition: { duration: 0.3 },
+  },
 };
 
 export default function Projects() {
@@ -59,40 +60,42 @@ function ProjectItem({ name, id, setActiveProject }) {
     setActiveProject(null);
   }
   return (
-    <motion.div
-      className={styles.projectItem}
-      onMouseOver={() => mouseHoverAction()}
-      onMouseOut={() => mouseLeavingAction()}
-      initial={{ opacity: 0.3 }}
-      animate={
-        hoverStatus
-          ? { opacity: 1, transition: { duration: 0.3 } }
-          : { opacity: 0.3, transition: { duration: 0.3 } }
-      }
-    >
-      <h1>{name}</h1>
+    <Link href="/sport" scroll={false}>
+      <motion.div
+        className={styles.projectItem}
+        onMouseOver={() => mouseHoverAction()}
+        onMouseOut={() => mouseLeavingAction()}
+        initial={{ opacity: 0.3 }}
+        animate={
+          hoverStatus
+            ? { opacity: 1, transition: { duration: 0.3 } }
+            : { opacity: 0.3, transition: { duration: 0.3 } }
+        }
+      >
+        <h1>{name}</h1>
 
-      <AnimatePresence mode="wait">
-        {hoverStatus && (
-          <motion.div
-            className={styles.imagePopUp}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={popupVariant}
-          >
-            <Image
-              src={categories[id].src}
-              alt={categories[id].name}
-              fill={true}
-              placeholder="blur"
-              quality={40}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+        <AnimatePresence mode="wait">
+          {hoverStatus && (
+            <motion.div
+              className={styles.imagePopUp}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={popupVariant}
+            >
+              <Image
+                src={categories[id].src}
+                alt={categories[id].name}
+                fill={true}
+                placeholder="blur"
+                quality={40}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-      {/* </div> */}
-    </motion.div>
+        {/* </div> */}
+      </motion.div>
+    </Link>
   );
 }

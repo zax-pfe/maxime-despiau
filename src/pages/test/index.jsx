@@ -27,8 +27,9 @@ export default function Index() {
     document.body.style.paddingRight = `${scrollbarWidth}px`;
 
     window.scrollTo(0, 0);
-    setTimeout(() => {
-      window.scrollTo(0, 0);
+
+    const timeout = setTimeout(() => {
+      // window.scrollTo(0, 0);
       setIsLoading(false);
       document.body.style.cursor = "default";
       document.body.style.overflow = "auto";
@@ -37,7 +38,7 @@ export default function Index() {
     }, 2400);
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [isLoading]);
 
   return (
     <div>

@@ -1,0 +1,153 @@
+.gallery {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.imageGrid {
+  width: 92vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5vw;
+  margin-left: 8vw;
+  padding: 5vh 0 5vh 0;
+}
+
+.galleryImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+
+  .imageContainer {
+    position: relative;
+    height: 50vh;
+    width: 25vw;
+    background-color: white;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .imageContainer img {
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  .imageContainer:hover img {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 8vw;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  align-items: center;
+  padding: 3vh 0 3vh 0;
+  text-transform: uppercase;
+  font-family: "Satoshi-Bold", sans-serif;
+  font-size: 1.5vw;
+
+  .smallLine {
+    height: 10vh;
+    border-left: solid 2px var(--text);
+  }
+
+  .longLine {
+    height: 100%;
+    border-left: solid 2px var(--text);
+  }
+}
+
+.carousel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--background);
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .mainContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+
+    .rightArrowContainer {
+      height: 100%;
+      width: 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      .cross {
+        height: 60px;
+        width: 50px;
+        position: absolute;
+        top: 20px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+      }
+    }
+
+    .mainImage {
+      height: 90vh;
+      width: 90vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      .mainImgeContainer {
+        height: 90vh;
+        width: 90vw;
+        position: relative;
+      }
+
+      .mainImgeContainer img {
+        object-fit: contain;
+        object-position: top;
+      }
+    }
+    .leftArrowContainer {
+      height: 100%;
+      width: 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      background-color: var(--text);
+      cursor: pointer;
+    }
+  }
+}
