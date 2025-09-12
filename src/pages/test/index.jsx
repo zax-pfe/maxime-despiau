@@ -35,10 +35,10 @@ export default function Index() {
       document.body.style.overflow = "auto";
       document.body.style.paddingRight = "0px";
       setActiveSection(0);
-    }, 2400);
+    }, 2200);
 
     return () => clearTimeout(timeout);
-  }, [isLoading]);
+  }, []);
 
   return (
     <div>

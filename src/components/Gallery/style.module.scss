@@ -81,6 +81,15 @@
   align-items: center;
   justify-content: center;
 
+  .carouselButton {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   .mainContainer {
     display: flex;
     align-items: center;

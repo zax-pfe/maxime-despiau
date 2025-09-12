@@ -127,6 +127,7 @@ function Carousel({ activeImage, setActiveImage, images }) {
             onClick={() => previous()}
             style={{ color: "var(--text)", cursor: "pointer" }}
             size={45}
+            className={styles.carouselButton}
           />
         </div>
         <div className={styles.mainImage}>
@@ -150,10 +151,10 @@ function Carousel({ activeImage, setActiveImage, images }) {
         <div className={styles.rightArrowContainer}>
           <div className={styles.cross} onClick={() => setActiveImage(null)}>
             <IoMdClose
-              className="carousel-button"
+              className={styles.carouselButton}
               // onClick={() => setActiveImage(null)}
               style={{ color: "var(--text)" }}
-              size={35}
+              size={40}
             />
           </div>
 
@@ -161,6 +162,7 @@ function Carousel({ activeImage, setActiveImage, images }) {
             onClick={() => next()}
             style={{ color: "var(--text)", cursor: "pointer" }}
             size={45}
+            className={styles.carouselButton}
           />
         </div>
       </div>
