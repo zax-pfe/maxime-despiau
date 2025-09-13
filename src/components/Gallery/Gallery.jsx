@@ -4,8 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { IoMdClose, IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ActivePageContext } from "@/context/ActivePageContext";
 
 const carouselVariant = {
   hidden: {
@@ -42,12 +43,13 @@ const carouselImagesVariant = {
 
 export default function Gallery({ images }) {
   const [activeImage, setActiveImage] = useState(null);
+  const { activePage, setActivePage } = useContext(ActivePageContext);
 
   return (
     <div className={styles.gallery}>
       <div className={styles.panel}>
         <div className={styles.smallLine} />
-        <Link href="/test">
+        <Link href="/test" onClick={() => setActivePage("")}>
           <VerticalText>Back</VerticalText>
         </Link>
         <div className={styles.longLine} />

@@ -1,10 +1,11 @@
 import styles from "./style.module.scss";
 import AnimatedHeaderText from "../Animatedtext/AnimatedHeader";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { categories } from "@/data/categoriesList";
 import Image from "next/image";
 import Link from "next/link";
+import { ActivePageContext } from "@/context/ActivePageContext";
 
 const popupVariant = {
   hidden: {
@@ -26,6 +27,7 @@ const popupVariant = {
 
 export default function Projects() {
   const [activeProject, setActiveProject] = useState("katana");
+
   return (
     <div className={styles.projects}>
       <div className={styles.projectTitle}>
@@ -50,6 +52,8 @@ export default function Projects() {
 
 function ProjectItem({ name, id, setActiveProject }) {
   const [hoverStatus, setHoverStatus] = useState(false);
+  const { activePage, setActivePage } = useContext(ActivePageContext);
+
   function mouseHoverAction() {
     setHoverStatus(true);
     setActiveProject(id);
@@ -60,7 +64,7 @@ function ProjectItem({ name, id, setActiveProject }) {
     setActiveProject(null);
   }
   return (
-    <Link href="/sport" scroll={false}>
+    <Link href="/sport" scroll={false} onClick={() => setActivePage("sport")}>
       <motion.div
         className={styles.projectItem}
         onMouseOver={() => mouseHoverAction()}
