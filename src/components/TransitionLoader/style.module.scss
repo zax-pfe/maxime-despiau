@@ -4,9 +4,20 @@
   align-items: center;
   width: 100%;
   height: 100%;
+  text-transform: uppercase;
+  font-family: "Satoshi-Bold", sans-serif;
 
   .transitionText {
     font-size: 8vw;
-    color: white;
+    color: var(--text);
   }
+}
+
+.exitLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: red;
 }

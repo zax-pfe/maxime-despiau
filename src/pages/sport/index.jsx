@@ -6,7 +6,9 @@ import { useContext, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { TransitionContext } from "@/context/TransitionContext";
 import styles from "./page.module.scss";
-import TransitionLoader from "@/components/TransitionLoader/TransitionLoader";
+import TransitionLoader, {
+  ExitLoader,
+} from "@/components/TransitionLoader/TransitionLoader";
 
 export default function Index() {
   const container = useRef();

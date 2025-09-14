@@ -72,6 +72,7 @@ export default function Menu({ activeSection, setActiveSection }) {
       </div>
       <Drawer
         activeMenu={activeMenu}
+        setActiveMenu={setActiveMenu}
         activeSection={activeSection}
         setActiveSection={setActiveSection}
       />

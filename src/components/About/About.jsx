@@ -7,7 +7,7 @@ import { aboutText } from "@/data/aboutText";
 
 export default function About() {
   return (
-    <div className={styles.about}>
+    <section className={styles.about} id="About">
       <div className={styles.imageContainer}>
         <Image src={about} alt={"About image"} fill />
       </div>
@@ -24,6 +24,6 @@ export default function About() {
         </div>
       </div>
       {/* <div></div> */}
-    </div>
+    </section>
   );
 }

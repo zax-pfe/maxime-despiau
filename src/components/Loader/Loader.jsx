@@ -21,7 +21,7 @@ export default function Loader() {
       });
 
       const timeline = gsap.timeline({
-        defaults: { duration: 1.2, autoAlpha: 0, yPercent: 100 },
+        defaults: { duration: 1.2, autoAlpha: 1, yPercent: 100 },
       });
 
       timeline.from(split.chars, {

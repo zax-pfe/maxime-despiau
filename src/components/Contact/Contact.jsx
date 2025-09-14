@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function Contact() {
   const [hoveredContact, setHoveredContact] = useState(null);
   return (
-    <div className={styles.contact}>
+    <section className={styles.contact} id="Contact">
       <div className={styles.header}>
         <AnimatedHeaderText text={"Contact"} isLoading={false} />
       </div>
@@ -34,7 +34,7 @@ export default function Contact() {
           setHoveredContact={setHoveredContact}
         />
       </div>
-    </div>
+    </section>
   );
 }
 

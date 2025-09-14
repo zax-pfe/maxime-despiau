@@ -22,10 +22,12 @@ const menuVariant = {
 
 export default function Drawer({
   activeMenu,
+  setActiveMenu,
   activeSection,
   setActiveSection,
 }) {
   const [hoveredItem, setHoverredItem] = useState(0);
+
   return (
     <AnimatePresence>
       {activeMenu && (
@@ -52,6 +54,7 @@ export default function Drawer({
                 id={i}
                 hoveredItem={hoveredItem}
                 item={item}
+                setActiveMenu={setActiveMenu}
               />
             ))}
           </div>
@@ -61,8 +64,21 @@ export default function Drawer({
   );
 }
 
-function DrawerItem({ setHoverredItem, id, hoveredItem, item }) {
+function DrawerItem({ setHoverredItem, id, hoveredItem, item, setActiveMenu }) {
   const textRef = useRef(null);
+
+  function actionOnClick() {
+    if (item.name === "Home") {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    } else {
+      const section = document.getElementById(item.name);
+      if (section) {
+        section.scrollIntoView({ behavior: "instant" });
+      }
+    }
+    setActiveMenu(false);
+  }
+
   useGSAP(() => {
     document.fonts.ready.then(() => {
       let split = SplitText.create(textRef.current, {
@@ -96,6 +112,7 @@ function DrawerItem({ setHoverredItem, id, hoveredItem, item }) {
       className={styles.navItem}
       onMouseOver={() => setHoverredItem(id)}
       onMouseOut={() => setHoverredItem(0)}
+      onClick={() => actionOnClick()}
       initial={{ opacity: 0.3 }}
       animate={
         hoveredItem === id

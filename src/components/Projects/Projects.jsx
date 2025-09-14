@@ -29,7 +29,7 @@ export default function Projects() {
   const [activeProject, setActiveProject] = useState("katana");
 
   return (
-    <div className={styles.projects}>
+    <section className={styles.projects} id="Works">
       <div className={styles.projectTitle}>
         <AnimatedHeaderText text={"works"} isLoading={false} />
       </div>
@@ -46,7 +46,7 @@ export default function Projects() {
         setActiveProject={setActiveProject}
       />
       <ProjectItem name="Gobelins" id={3} setActiveProject={setActiveProject} />
-    </div>
+    </section>
   );
 }
 

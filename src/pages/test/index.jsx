@@ -14,7 +14,7 @@ import styles from "./page.module.scss";
 import TransitionLoader from "@/components/TransitionLoader/TransitionLoader";
 
 export default function Index() {
-  const container = useRef();
+  const exitContainer = useRef();
   const { timeline } = useContext(TransitionContext);
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState(0);
@@ -52,7 +52,7 @@ export default function Index() {
   useGSAP(() => {
     timeline.add(
       gsap.fromTo(
-        container.current,
+        exitContainer.current,
         {
           x: "-100%",
         },
@@ -67,7 +67,7 @@ export default function Index() {
   return (
     <div>
       {isLoading && <Loader />}
-      <div className={styles.exitLoader} ref={container}>
+      <div className={styles.exitLoader} ref={exitContainer}>
         <TransitionLoader />
       </div>
 
