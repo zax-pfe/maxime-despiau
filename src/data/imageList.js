@@ -2,6 +2,7 @@ import dorianTennis from "../../public/images/Sport/Dorian-Tennis-7087.jpg";
 import heroImage from "../../public/images/Portrait/HomeImage1.jpg";
 import heroImage2 from "../../public/images/Portrait/heroImage.jpg";
 
+// This list is the list of image for the Hero Background
 export const heroImages = [
   {
     id: 0,

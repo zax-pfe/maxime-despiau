@@ -1,5 +1,5 @@
 import Gallery from "@/components/Gallery/Gallery";
-import { eventImages } from "@/data/eventImages";
+import { eventImages } from "@/data/works/eventImages";
 
 import gsap from "gsap";
 import { useContext, useRef } from "react";

@@ -34,18 +34,14 @@ export default function Projects() {
         <AnimatedHeaderText text={"works"} isLoading={false} />
       </div>
       <div className={styles.line} />
-      <ProjectItem name="katana" id={0} setActiveProject={setActiveProject} />
-      <ProjectItem
-        name="Alternance"
-        id={1}
-        setActiveProject={setActiveProject}
-      />
-      <ProjectItem
-        name="Projet Web"
-        id={2}
-        setActiveProject={setActiveProject}
-      />
-      <ProjectItem name="Gobelins" id={3} setActiveProject={setActiveProject} />
+
+      {categories.map((item, i) => (
+        <ProjectItem
+          name={item.name}
+          id={i}
+          setActiveProject={setActiveProject}
+        />
+      ))}
     </section>
   );
 }
@@ -64,7 +60,7 @@ function ProjectItem({ name, id, setActiveProject }) {
     setActiveProject(null);
   }
   return (
-    <Link href="/sport" scroll={false} onClick={() => setActivePage("sport")}>
+    <Link href={`/${name}`} scroll={false} onClick={() => setActivePage(name)}>
       <motion.div
         className={styles.projectItem}
         onMouseOver={() => mouseHoverAction()}
