@@ -3,6 +3,7 @@ import AnimatedHeaderText from "../Animatedtext/AnimatedHeader";
 import { motion } from "framer-motion";
 import { MdContentCopy } from "react-icons/md";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Contact() {
   const [hoveredContact, setHoveredContact] = useState(null);
@@ -14,22 +15,22 @@ export default function Contact() {
       <div className={styles.infos}>
         <InfoElement
           name={"Insta"}
-          content={"Maxime.Depsiau"}
-          link={"linkInsta"}
+          content={"maxime.despiau"}
+          link={"https://www.instagram.com/maxime.despiau/?__pwa=1"}
           hoveredContact={hoveredContact}
           setHoveredContact={setHoveredContact}
         />
         <InfoElement
           name={"Linkedin"}
           content={"Maxime Depsiau"}
-          link={"linkedein"}
+          link={"https://www.linkedin.com/in/maxime-despiau-355991229/"}
           hoveredContact={hoveredContact}
           setHoveredContact={setHoveredContact}
         />
         <InfoElement
           name={"Mail"}
-          content={"Maxime Depsiau"}
-          link={"linkedein"}
+          content={"maximedespiau@gmail.com"}
+          link={"mailto:maximedespiau@gmail.com"}
           hoveredContact={hoveredContact}
           setHoveredContact={setHoveredContact}
         />
@@ -45,8 +46,16 @@ function InfoElement({
   hoveredContact,
   setHoveredContact,
 }) {
+  const handleCopy = (e) => {
+    e.preventDefault(); // empêche d'ouvrir le lien quand on clique sur l’icône
+    navigator.clipboard.writeText(content);
+  };
+
   return (
-    <div
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
       className={styles.infoElement}
       onMouseOver={() => setHoveredContact(name)}
       onMouseOut={() => setHoveredContact(null)}
@@ -54,7 +63,7 @@ function InfoElement({
       <div className={styles.name}>{name}</div>
       <div className={styles.contentContainer}>
         <div className={styles.content}>{content}</div>
-        <div className={styles.copy}>
+        <div className={styles.copy} onClick={handleCopy}>
           <MdContentCopy />
         </div>
       </div>
@@ -76,6 +85,6 @@ function InfoElement({
           className={styles.screen}
         />
       </div>
-    </div>
+    </a>
   );
 }

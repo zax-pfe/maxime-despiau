@@ -1,14 +1,12 @@
 import Gallery from "@/components/Gallery/Gallery";
-import { eventImages } from "@/data/works/eventImages";
+import { sportImages } from "@/data/works/sportImage";
 
 import gsap from "gsap";
 import { useContext, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { TransitionContext } from "@/context/TransitionContext";
 import styles from "./page.module.scss";
-import TransitionLoader, {
-  ExitLoader,
-} from "@/components/TransitionLoader/TransitionLoader";
+import TransitionLoader from "@/components/TransitionLoader/TransitionLoader";
 
 export default function Index() {
   const container = useRef();
@@ -45,7 +43,7 @@ export default function Index() {
       <div className={styles.exitLoader} ref={container}>
         <TransitionLoader />
       </div>
-      <Gallery images={eventImages} />
+      <Gallery images={sportImages} />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import Gallery from "@/components/Gallery/Gallery";
-import { eventImages } from "@/data/works/eventImages";
+import { travelImages } from "@/data/works/travelImages";
 
 import gsap from "gsap";
 import { useContext, useRef } from "react";
@@ -45,7 +45,7 @@ export default function Index() {
       <div className={styles.exitLoader} ref={container}>
         <TransitionLoader />
       </div>
-      <Gallery images={eventImages} />
+      <Gallery images={travelImages} />
     </>
   );
 }

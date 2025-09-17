@@ -49,7 +49,7 @@ export default function Gallery({ images }) {
     <div className={styles.gallery}>
       <div className={styles.panel}>
         <div className={styles.smallLine} />
-        <Link href="/test" onClick={() => setActivePage("")}>
+        <Link href="/" onClick={() => setActivePage("")}>
           <VerticalText>Back</VerticalText>
         </Link>
         <div className={styles.longLine} />
