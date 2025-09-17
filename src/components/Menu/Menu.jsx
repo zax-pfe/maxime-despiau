@@ -3,6 +3,7 @@ import { useState } from "react";
 import Drawer from "../Drawer/Drawer";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
+import DrawerPhone from "../phone/DrawerPhone/DrawerPhone";
 
 // Le menu est le composant en haut a doite de la fetchInternalImage,
 // c'est un burger menu
@@ -19,7 +20,7 @@ const iconVariant = {
   },
 };
 
-export default function Menu({ activeSection, setActiveSection }) {
+export default function Menu({ activeSection, setActiveSection, device }) {
   const [activeMenu, setActiveMenu] = useState(false);
   useEffect(() => {
     if (activeMenu) {
@@ -70,12 +71,21 @@ export default function Menu({ activeSection, setActiveSection }) {
           )}
         </AnimatePresence>
       </div>
-      <Drawer
-        activeMenu={activeMenu}
-        setActiveMenu={setActiveMenu}
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-      />
+      {device === "phone" ? (
+        <DrawerPhone
+          activeMenu={activeMenu}
+          setActiveMenu={setActiveMenu}
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+        />
+      ) : (
+        <Drawer
+          activeMenu={activeMenu}
+          setActiveMenu={setActiveMenu}
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+        />
+      )}
     </>
   );
 }

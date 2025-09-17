@@ -17,6 +17,10 @@
     color: var(--text);
     color: transparent; /* Le remplissage du texte */
     -webkit-text-stroke: 1px var(--text); /* Contour */
+
+    @media (max-width: 768px) {
+      font-size: 15vw;
+    }
   }
 
   .line {
@@ -41,6 +45,10 @@
     h1 {
       font-family: "Satoshi-Bold", sans-serif;
       font-size: 6vw;
+
+      @media (max-width: 768px) {
+        font-size: 12vw;
+      }
     }
 
     .imagePopUp {

@@ -7,14 +7,20 @@
   overflow: visible; //pour voir l'ombre
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
-  .hero img {
+  // .imageContainer {
+  //   position: relative;
+  //   height: 100%;
+  //   width: 100%;
+  // }
+
+  img {
     object-fit: cover;
     object-position: top;
-    filter: brightness(70%);
+    filter: brightness(80%);
   }
 
   .heroText {
-    position: relative;
+    position: absolute;
     display: flex;
     height: 100%;
     flex-direction: column;

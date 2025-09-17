@@ -12,13 +12,18 @@ import { useGSAP } from "@gsap/react";
 import { TransitionContext } from "@/context/TransitionContext";
 import styles from "./page.module.scss";
 import TransitionLoader from "@/components/TransitionLoader/TransitionLoader";
+import useDevice from "@/hooks/useDevice";
+import HeroPhone from "@/components/phone/HeroPhone/HeroPhone";
 
 export default function Index() {
+  const device = useDevice();
   const exitContainer = useRef();
   const { timeline } = useContext(TransitionContext);
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState(0);
+
   useEffect(() => {
+    console.log("device :", device);
     const scrollbarWidth =
       window.innerWidth - document.documentElement.clientWidth;
 
@@ -47,7 +52,7 @@ export default function Index() {
       document.body.style.overflow = "auto";
       document.body.style.paddingRight = "0px";
     };
-  }, []);
+  }, [device]);
 
   useGSAP(() => {
     timeline.add(
@@ -71,11 +76,30 @@ export default function Index() {
         <TransitionLoader />
       </div>
 
-      <Menu activeSection={activeSection} setActiveSection={setActiveSection} />
-      <Hero />
-      <Projects />
-      <About />
-      <Contact />
+      {device === "phone" ? (
+        <div className={styles.pagePhone}>
+          <Menu
+            activeSection={activeSection}
+            setActiveSection={setActiveSection}
+            device={device}
+          />
+          <HeroPhone />
+          <Projects />
+          <About />
+          <Contact />
+        </div>
+      ) : (
+        <>
+          <Menu
+            activeSection={activeSection}
+            setActiveSection={setActiveSection}
+          />
+          <Hero />
+          <Projects />
+          <About />
+          <Contact />
+        </>
+      )}
     </div>
   );
 }

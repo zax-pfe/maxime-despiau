@@ -37,6 +37,7 @@ export default function Projects() {
 
       {categories.map((item, i) => (
         <ProjectItem
+          key={item.name}
           name={item.name}
           id={i}
           setActiveProject={setActiveProject}

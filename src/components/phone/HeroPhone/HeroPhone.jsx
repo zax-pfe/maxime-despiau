@@ -1,15 +1,8 @@
 import styles from "./style.module.scss";
 import { heroImages } from "@/data/imageList";
 import { useState, useEffect, useRef } from "react";
-import {
-  motion,
-  useScroll,
-  MotionValue,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
 const imageVariant = {
   hidden: {
     opacity: 0,
@@ -22,8 +15,7 @@ const imageVariant = {
     transition: { duration: 0.7, ease: [0.61, 1, 0.88, 1] },
   },
 };
-
-export default function Hero() {
+export default function HeroPhone() {
   const [activeHero, setActiveHero] = useState(0);
 
   useEffect(() => {
@@ -35,11 +27,8 @@ export default function Hero() {
 
     return () => clearInterval(intervalId);
   }, [activeHero]);
-
   return (
-    <div className={styles.hero}>
-      {/* <div className={styles.imageContainer}> */}
-
+    <div className={styles.heroPhone}>
       <AnimatePresence mode="sync">
         <motion.div
           key={activeHero}
@@ -47,31 +36,20 @@ export default function Hero() {
           animate="visible"
           exit="hidden"
           variants={imageVariant}
-          // style={{ position: "relative" }}
-          //
         >
-          {/* <div className={styles.imageContainer}> */}
           <Image
             src={heroImages[activeHero].src}
             alt={heroImages[activeHero].name}
             fill
             priority
-            // sizes="100vw"
             quality={80}
-            style={{ objectFit: "cover", objectPosition: "top" }}
           />
-          {/* </div> */}
         </motion.div>
       </AnimatePresence>
 
-      {/* </div> */}
       <div className={styles.heroText}>
-        <div className={styles.header}>
-          <p>profesionnal photographer</p>
-          <span className={styles.line} />
-          <p>based in toulouse - france</p>
-        </div>
-        <div className={styles.name}>Maxime Despiau</div>
+        <h1>Maxime</h1>
+        <h1>Despiau</h1>
       </div>
     </div>
   );

@@ -1,0 +1,30 @@
+.heroPhone {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    object-fit: cover;
+    object-position: top;
+    filter: brightness(80%);
+  }
+}
+
+.heroText {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  z-index: 8;
+
+  h1 {
+    font-size: 20vw;
+    text-transform: uppercase;
+    font-family: "Satoshi-Black", "sans-serif";
+    color: var(--text);
+  }
+}
