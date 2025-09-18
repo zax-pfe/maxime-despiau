@@ -129,7 +129,13 @@ function ImageSlider({ activeImage, setActiveImage, images }) {
         />
       </div>
       <div className={styles.imageSlider}>
-        <Carousel setApi={setApi} className={styles.carouselContainer}>
+        <Carousel
+          setApi={setApi}
+          className={styles.carouselContainer}
+          opts={{
+            loop: true,
+          }}
+        >
           <CarouselContent>
             {images.map((item, index) => (
               <CarouselItem key={index} className={styles.carouselItem}>
