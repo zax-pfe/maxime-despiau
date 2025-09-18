@@ -79,13 +79,32 @@
     width: 100%;
     display: flex;
     justify-content: end;
-    background-color: aquamarine;
   }
 
   .imageSlider {
     height: 90vh;
     width: 100%;
-    background-color: bisque;
+
+    .carouselContainer {
+      display: flex;
+      height: 90vh;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carouselItem {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 90vh;
+      width: 100vw;
+    }
+
+    .carouselItem img {
+      object-fit: contain;
+    }
   }
 
   .bottom {

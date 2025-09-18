@@ -2,9 +2,9 @@ import VerticalText from "@/components/VerticalText/VerticalText";
 import styles from "./style.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { IoMdClose, IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ActivePageContext } from "@/context/ActivePageContext";
 
@@ -64,7 +64,7 @@ export default function GalleryPhone({ images }) {
             exit="hidden"
             variants={carouselVariant}
           >
-            <Carousel
+            <ImageSlider
               images={images}
               activeImage={activeImage}
               setActiveImage={setActiveImage}
@@ -96,30 +96,58 @@ function GalleryImage({ image, activeImage, setActiveImage }) {
 }
 
 function ImageSlider({ activeImage, setActiveImage, images }) {
+  const [api, setApi] = useState(null);
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
   return (
     <div className={styles.carousel}>
-      <div className={styles.topContainer}>x</div>
-      <div className={styles.imageSlider}>This is the image slider</div>
+      <div className={styles.topContainer} onClick={() => setActiveImage(null)}>
+        <IoMdClose
+          className={styles.carouselButton}
+          // onClick={() => setActiveImage(null)}
+          style={{ color: "var(--text)" }}
+          size={30}
+        />
+      </div>
+      <div className={styles.imageSlider}>
+        <Carousel setApi={setApi} className={styles.carouselContainer}>
+          <CarouselContent>
+            {images.map((item, index) => (
+              <CarouselItem key={index} className={styles.carouselItem}>
+                <Image key={index} src={item.src} alt={item.name} fill />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
       <div className={styles.bottom}>
         {images.map((_, i) => (
-          <Dot
-            key={i}
-            index={i}
-            activeImage={activeImage}
-            setActiveImage={setActiveImage}
-          />
+          <Dot key={i} index={i} current={current} />
         ))}
       </div>
     </div>
   );
 }
 
-function Dot({ index, activeImage, setActiveImage }) {
+function Dot({ index, current }) {
   return (
     <motion.div
       className={styles.dot}
-      onClick={() => setActiveImage(index)}
-      animate={{ opacity: activeImage === index ? 1 : 0.5 }}
+      animate={{ opacity: current === index ? 1 : 0.5 }}
       transition={{ duration: 0.3 }}
     />
   );
