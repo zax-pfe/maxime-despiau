@@ -1,5 +1,6 @@
 import Gallery from "@/components/Gallery/Gallery";
 import { portraitsImages } from "@/data/works/portraitsImages";
+import GalleryPhone from "@/components/phone/GalleryPhone/GalleryPhone";
 
 import gsap from "gsap";
 import { useContext, useRef } from "react";
@@ -7,10 +8,12 @@ import { useGSAP } from "@gsap/react";
 import { TransitionContext } from "@/context/TransitionContext";
 import styles from "./page.module.scss";
 import TransitionLoader from "@/components/TransitionLoader/TransitionLoader";
+import useDevice from "@/hooks/useDevice";
 
 export default function Index() {
   const container = useRef();
   const { timeline } = useContext(TransitionContext);
+  const device = useDevice();
 
   useGSAP(() => {
     gsap.fromTo(
@@ -43,7 +46,11 @@ export default function Index() {
       <div className={styles.exitLoader} ref={container}>
         <TransitionLoader />
       </div>
-      <Gallery images={portraitsImages} />
+      {device === "phone" ? (
+        <GalleryPhone images={portraitsImages} />
+      ) : (
+        <Gallery images={portraitsImages} />
+      )}
     </>
   );
 }
