@@ -4,7 +4,7 @@
   width: 100%;
 }
 .imageGrid {
-  width: 90vw;
+  width: 85vw;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -12,7 +12,7 @@
   flex-direction: column;
   gap: 2vh;
 
-  padding: 5vh 0 5vh 10vw;
+  padding: 5vh 0 5vh 11vw;
 }
 
 .galleryImage {
@@ -23,7 +23,7 @@
   .imageContainer {
     position: relative;
     height: 50vh;
-    width: 80vw;
+    width: 85vw;
     background-color: white;
     overflow: hidden;
   }

@@ -98,7 +98,7 @@ function ProjectItem({ name, id, setActiveProject }) {
       >
         <h1>{name}</h1>
 
-        <AnimatePresence mode="wait">
+        {/* <AnimatePresence mode="wait">
           {hoverStatus && (
             <motion.div
               className={styles.imagePopUp}
@@ -116,7 +116,7 @@ function ProjectItem({ name, id, setActiveProject }) {
               />
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
 
         {/* </div> */}
       </motion.div>
