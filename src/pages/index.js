@@ -15,6 +15,7 @@ import TransitionLoader from "@/components/TransitionLoader/TransitionLoader";
 import useDevice from "@/hooks/useDevice";
 import HeroPhone from "@/components/phone/HeroPhone/HeroPhone";
 import ProjectsPhone from "@/components/phone/ProjectsPhone/ProjectPhone";
+import Footer from "@/components/Footer/Footer";
 
 export default function Index() {
   const device = useDevice();
@@ -88,6 +89,7 @@ export default function Index() {
           <ProjectsPhone />
           <About />
           <Contact />
+          <Footer />
         </div>
       ) : (
         <>
@@ -99,6 +101,7 @@ export default function Index() {
           <Projects />
           <About />
           <Contact />
+          <Footer />
         </>
       )}
     </div>

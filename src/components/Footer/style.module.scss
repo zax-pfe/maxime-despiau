@@ -1,0 +1,14 @@
+.footer {
+  height: 4vh;
+  width: 100%;
+  color: var(--text);
+  // background-color: ;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1vw;
+  gap: 2vw;
+  @media (max-width: 768px) {
+    font-size: 2vw;
+    height: 6vh;
+  }
+}
