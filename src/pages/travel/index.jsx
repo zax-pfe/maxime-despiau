@@ -6,11 +6,11 @@ import { useContext, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { TransitionContext } from "@/context/TransitionContext";
 import styles from "./page.module.scss";
-import TransitionLoader, {
-  ExitLoader,
-} from "@/components/TransitionLoader/TransitionLoader";
-
+import TransitionLoader from "@/components/TransitionLoader/TransitionLoader";
+import useDevice from "@/hooks/useDevice";
+import GalleryPhone from "@/components/phone/GalleryPhone/GalleryPhone";
 export default function Index() {
+  const device = useDevice();
   const container = useRef();
   const { timeline } = useContext(TransitionContext);
 
@@ -45,7 +45,11 @@ export default function Index() {
       <div className={styles.exitLoader} ref={container}>
         <TransitionLoader />
       </div>
-      <Gallery images={travelImages} />
+      {device === "phone" ? (
+        <GalleryPhone images={travelImages} />
+      ) : (
+        <Gallery images={travelImages} />
+      )}
     </>
   );
 }

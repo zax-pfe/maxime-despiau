@@ -57,11 +57,6 @@
   font-family: "Satoshi-Bold", sans-serif;
   font-size: 1.5vw;
 
-  @media (max-width: 768px) {
-    font-size: 5vw;
-    width: 10vw;
-  }
-
   .smallLine {
     height: 10vh;
     border-left: solid 2px var(--text);
