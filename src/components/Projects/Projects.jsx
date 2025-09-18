@@ -26,7 +26,7 @@ const popupVariant = {
 };
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState("katana");
+  const [activeProject, setActiveProject] = useState("");
 
   return (
     <section className={styles.projects} id="Works">

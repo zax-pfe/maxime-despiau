@@ -1,7 +1,14 @@
 import styles from "./style.module.scss";
-import AnimatedHeaderText from "../Animatedtext/AnimatedHeader";
-import { useState, useContext } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import AnimatedHeaderText from "@/components/Animatedtext/AnimatedHeader";
+import { useState, useContext, useEffect, useRef } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { useInView } from "framer-motion";
+
 import { categories } from "@/data/categoriesList";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +33,7 @@ const popupVariant = {
 };
 
 export default function ProjectsPhone() {
-  const [activeProject, setActiveProject] = useState("katana");
+  const [activeProject, setActiveProject] = useState("");
 
   return (
     <section className={styles.projects} id="Works">
@@ -51,6 +58,21 @@ function ProjectItem({ name, id, setActiveProject }) {
   const [hoverStatus, setHoverStatus] = useState(false);
   const { activePage, setActivePage } = useContext(ActivePageContext);
 
+  const itemRef = useRef(null);
+  const isInView = useInView(itemRef, {
+    amount: 0.5,
+    margin: "-20% 0px -60% 0px",
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      setHoverStatus(true);
+      setActiveProject(id);
+    } else {
+      setHoverStatus(false);
+    }
+  }, [isInView, id, setActiveProject]);
+
   function mouseHoverAction() {
     setHoverStatus(true);
     setActiveProject(id);
@@ -63,6 +85,7 @@ function ProjectItem({ name, id, setActiveProject }) {
   return (
     <Link href={`/${name}`} scroll={false} onClick={() => setActivePage(name)}>
       <motion.div
+        ref={itemRef}
         className={styles.projectItem}
         onMouseOver={() => mouseHoverAction()}
         onMouseOut={() => mouseLeavingAction()}

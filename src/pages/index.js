@@ -14,6 +14,7 @@ import styles from "./page.module.scss";
 import TransitionLoader from "@/components/TransitionLoader/TransitionLoader";
 import useDevice from "@/hooks/useDevice";
 import HeroPhone from "@/components/phone/HeroPhone/HeroPhone";
+import ProjectsPhone from "@/components/phone/ProjectsPhone/ProjectPhone";
 
 export default function Index() {
   const device = useDevice();
@@ -84,7 +85,7 @@ export default function Index() {
             device={device}
           />
           <HeroPhone />
-          <Projects />
+          <ProjectsPhone />
           <About />
           <Contact />
         </div>
