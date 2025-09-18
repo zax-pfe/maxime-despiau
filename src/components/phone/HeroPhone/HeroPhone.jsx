@@ -41,7 +41,7 @@ export default function HeroPhone() {
             src={heroImages[activeHero].src}
             alt={heroImages[activeHero].name}
             fill
-            priority
+            // priority
             quality={80}
           />
         </motion.div>

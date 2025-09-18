@@ -1,0 +1,68 @@
+.projects {
+  width: 100%;
+  // border: solid black 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 10vh 0 20vh 0;
+
+  .projectTitle {
+    font-family: "Satoshi-Black", sans-serif;
+    font-size: 8vw;
+    // width: 100%;
+    padding: 5vh 0 10vh 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    color: var(--text);
+    color: transparent; /* Le remplissage du texte */
+    -webkit-text-stroke: 1px var(--text); /* Contour */
+
+    @media (max-width: 768px) {
+      font-size: 15vw;
+    }
+  }
+
+  .line {
+    height: 2px;
+    border-top: solid 1px var(--text);
+    width: 100%;
+    opacity: 0.3;
+  }
+
+  .projectItem {
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    width: 100%;
+    border-bottom: solid var(--text) 1px;
+    height: 20vh;
+    color: var(--text);
+    text-transform: uppercase;
+    position: relative;
+    padding-left: 3vw;
+
+    h1 {
+      font-family: "Satoshi-Bold", sans-serif;
+      font-size: 6vw;
+
+      @media (max-width: 768px) {
+        font-size: 12vw;
+      }
+    }
+
+    .imagePopUp {
+      height: 45vh;
+      width: 45vw;
+      position: absolute;
+      left: 50%;
+      z-index: 10;
+      background: var(--background);
+      pointer-events: none;
+    }
+    .imagePopUp img {
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+}

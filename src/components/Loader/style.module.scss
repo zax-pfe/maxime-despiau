@@ -41,6 +41,10 @@
     height: 20px;
     width: 300px;
     overflow: hidden;
+
+    @media (max-width: 768px) {
+      width: 100px;
+    }
   }
 
   .line {

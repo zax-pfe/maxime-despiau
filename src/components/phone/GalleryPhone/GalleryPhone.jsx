@@ -96,8 +96,9 @@ function GalleryImage({ image, activeImage, setActiveImage }) {
 }
 
 function ImageSlider({ activeImage, setActiveImage, images }) {
+  console.log("active image egal:", activeImage);
   const [api, setApi] = useState(null);
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(activeImage);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -106,8 +107,12 @@ function ImageSlider({ activeImage, setActiveImage, images }) {
     }
 
     setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
-
+    if (activeImage !== null) {
+      api.scrollTo(activeImage, true);
+      setCurrent(activeImage + 1);
+    } else {
+      setCurrent(api.selectedScrollSnap() + 1);
+    }
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
@@ -147,7 +152,7 @@ function Dot({ index, current }) {
   return (
     <motion.div
       className={styles.dot}
-      animate={{ opacity: current === index ? 1 : 0.5 }}
+      animate={{ opacity: current - 1 === index ? 1 : 0.5 }}
       transition={{ duration: 0.3 }}
     />
   );
