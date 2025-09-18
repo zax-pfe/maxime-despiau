@@ -16,21 +16,18 @@ import useDevice from "@/hooks/useDevice";
 import HeroPhone from "@/components/phone/HeroPhone/HeroPhone";
 import ProjectsPhone from "@/components/phone/ProjectsPhone/ProjectPhone";
 import Footer from "@/components/Footer/Footer";
+import { IsLoadingContext } from "@/context/IsLoadingContext";
 
 export default function Index() {
   const device = useDevice();
   const exitContainer = useRef();
   const { timeline } = useContext(TransitionContext);
-  const [isLoading, setIsLoading] = useState(true);
+  const { isLoading, setIsLoading } = useContext(IsLoadingContext);
+  // const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState(0);
 
   useEffect(() => {
     console.log("device :", device);
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
-
-    document.body.style.paddingRight = `${scrollbarWidth}px`;
-    document.body.style.overflow = "hidden";
 
     const lenis = new Lenis();
     function raf(time) {
@@ -39,24 +36,49 @@ export default function Index() {
     }
     requestAnimationFrame(raf);
 
-    window.scrollTo(0, 0);
+    if (isLoading) {
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
 
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-      document.body.style.cursor = "default";
-      document.body.style.overflow = "auto";
-      document.body.style.paddingRight = "0px";
-      setActiveSection(0);
-    }, 2200);
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+      document.body.style.overflow = "hidden";
+
+      const timeout = setTimeout(() => {
+        setIsLoading(false);
+        document.body.style.cursor = "default";
+        document.body.style.overflow = "auto";
+        document.body.style.paddingRight = "0px";
+
+        window.scrollTo(0, 0);
+        setActiveSection(0);
+      }, 2200);
+
+      return () => {
+        clearTimeout(timeout);
+        document.body.style.overflow = "auto";
+        document.body.style.paddingRight = "0px";
+      };
+    }
 
     return () => {
-      clearTimeout(timeout);
+      // clearTimeout(timeout);
       document.body.style.overflow = "auto";
       document.body.style.paddingRight = "0px";
     };
-  }, [device]);
+  }, [device, isLoading, setIsLoading]);
 
   useGSAP(() => {
+    gsap.fromTo(
+      exitContainer.current,
+      {
+        x: "0%",
+      },
+      {
+        x: "100%",
+        ease: "power4.inOut",
+        duration: 1,
+      }
+    );
     timeline.add(
       gsap.fromTo(
         exitContainer.current,
