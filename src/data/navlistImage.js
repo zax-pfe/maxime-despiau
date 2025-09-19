@@ -1,8 +1,7 @@
 import events from "../../public/images/Evenementiel/WaCom-21.jpg";
 import home from "../../public/images/Portrait/heroImage.jpg";
-import about from "../../public/images/About/_MG_0870.jpg";
 import contact from "../../public/images/Contact/Shooting astrologie-6108.jpg";
-
+import about from "../../public/images/About/about.jpg";
 export const navListImage = [
   {
     id: 0,
