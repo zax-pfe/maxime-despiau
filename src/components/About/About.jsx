@@ -5,7 +5,7 @@ import AnimatedHeaderText from "../Animatedtext/AnimatedHeader";
 import AnimatedParagraphText from "../Animatedtext/AnimatedParagraph";
 import { aboutText } from "@/data/aboutText";
 
-export default function About() {
+export default function About({ isLoading }) {
   return (
     <section className={styles.about} id="About">
       <div className={styles.imageContainer}>
@@ -13,12 +13,12 @@ export default function About() {
       </div>
       <div className={styles.aboutText}>
         <div className={styles.headerText}>
-          <AnimatedHeaderText text={"About"} isLoading={false} />
+          <AnimatedHeaderText text={"About"} isLoading={isLoading} />
         </div>
         <div className={styles.contentText}>
           {aboutText.map((text, i) => (
             <div key={i}>
-              <AnimatedParagraphText isLoading={false} text={text.txt} />
+              <AnimatedParagraphText isLoading={isLoading} text={text.txt} />
             </div>
           ))}
         </div>

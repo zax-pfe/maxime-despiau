@@ -5,12 +5,12 @@ import { MdContentCopy } from "react-icons/md";
 import { useState } from "react";
 import Link from "next/link";
 
-export default function Contact() {
+export default function Contact({ isLoading }) {
   const [hoveredContact, setHoveredContact] = useState(null);
   return (
     <section className={styles.contact} id="Contact">
       <div className={styles.header}>
-        <AnimatedHeaderText text={"Contact"} isLoading={false} />
+        <AnimatedHeaderText text={"Contact"} isLoading={isLoading} />
       </div>
       <div className={styles.infos}>
         <InfoElement

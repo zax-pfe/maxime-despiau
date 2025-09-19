@@ -32,13 +32,13 @@ const popupVariant = {
   },
 };
 
-export default function ProjectsPhone() {
+export default function ProjectsPhone({ isLoading }) {
   const [activeProject, setActiveProject] = useState("");
 
   return (
     <section className={styles.projects} id="Works">
       <div className={styles.projectTitle}>
-        <AnimatedHeaderText text={"works"} isLoading={false} />
+        <AnimatedHeaderText text={"works"} isLoading={isLoading} />
       </div>
       <div className={styles.line} />
 

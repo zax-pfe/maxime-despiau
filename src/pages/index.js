@@ -109,9 +109,9 @@ export default function Index() {
             device={device}
           />
           <HeroPhone />
-          <ProjectsPhone />
-          <About />
-          <Contact />
+          <ProjectsPhone isLoading={isLoading} />
+          <About isLoading={isLoading} />
+          <Contact isLoading={isLoading} />
           <Footer />
         </div>
       ) : (
@@ -121,9 +121,9 @@ export default function Index() {
             setActiveSection={setActiveSection}
           />
           <Hero />
-          <Projects />
-          <About />
-          <Contact />
+          <Projects isLoading={isLoading} />
+          <About isLoading={isLoading} />
+          <Contact isLoading={isLoading} />
           <Footer />
         </>
       )}
