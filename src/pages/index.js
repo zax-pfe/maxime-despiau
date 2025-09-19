@@ -28,6 +28,7 @@ export default function Index() {
 
   useEffect(() => {
     console.log("device :", device);
+    window.scrollTo(0, 0);
 
     const lenis = new Lenis();
     function raf(time) {
