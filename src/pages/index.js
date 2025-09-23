@@ -23,7 +23,6 @@ export default function Index() {
   const exitContainer = useRef();
   const { timeline } = useContext(TransitionContext);
   const { isLoading, setIsLoading } = useContext(IsLoadingContext);
-  // const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState(0);
 
   useEffect(() => {
@@ -62,7 +61,6 @@ export default function Index() {
     }
 
     return () => {
-      // clearTimeout(timeout);
       document.body.style.overflow = "auto";
       document.body.style.paddingRight = "0px";
     };
