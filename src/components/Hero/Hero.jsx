@@ -1,6 +1,6 @@
 import styles from "./style.module.scss";
 import { heroImages } from "@/data/imageList";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import {
   motion,
   useScroll,
@@ -9,6 +9,10 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import Image from "next/image";
+import { useGSAP } from "@gsap/react";
+import SplitText from "gsap/SplitText";
+import gsap from "gsap";
+import { IsLoadingContext } from "@/context/IsLoadingContext";
 
 const imageVariant = {
   hidden: {
@@ -24,6 +28,10 @@ const imageVariant = {
 };
 
 export default function Hero() {
+  const textRef = useRef();
+  gsap.registerPlugin(SplitText);
+  const { isLoading, setIsLoading } = useContext(IsLoadingContext);
+
   const [activeHero, setActiveHero] = useState(0);
 
   useEffect(() => {
@@ -35,6 +43,29 @@ export default function Hero() {
 
     return () => clearInterval(intervalId);
   }, [activeHero]);
+
+  useGSAP(() => {
+    document.fonts.ready.then(() => {
+      let split = SplitText.create(textRef.current, {
+        type: "chars, lines",
+        autoSplit: true,
+        mask: "lines",
+      });
+      const timeline = gsap.timeline();
+
+      if (isLoading === true) {
+        timeline.to({}, { duration: 1.7 }).from(split.chars, {
+          y: 100,
+          yPercent: 100,
+          ease: "power4.out",
+          stagger: {
+            amount: 1,
+            from: "random",
+          },
+        });
+      }
+    });
+  }, []);
 
   return (
     <div className={styles.hero}>
@@ -71,7 +102,9 @@ export default function Hero() {
           <span className={styles.line} />
           <p>based in toulouse - france</p>
         </div>
-        <div className={styles.name}>Maxime Despiau</div>
+        <div className={styles.name} ref={textRef}>
+          Maxime Despiau
+        </div>
       </div>
     </div>
   );

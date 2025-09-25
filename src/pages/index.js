@@ -67,17 +67,20 @@ export default function Index() {
   }, [device, isLoading, setIsLoading]);
 
   useGSAP(() => {
-    gsap.fromTo(
-      exitContainer.current,
-      {
-        x: "0%",
-      },
-      {
-        x: "100%",
-        ease: "power4.inOut",
-        duration: 1,
-      }
-    );
+    if (isLoading === false) {
+      gsap.fromTo(
+        exitContainer.current,
+        {
+          x: "0%",
+        },
+        {
+          x: "100%",
+          ease: "power4.inOut",
+          duration: 1,
+        }
+      );
+    }
+
     timeline.add(
       gsap.fromTo(
         exitContainer.current,
